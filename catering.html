@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catering — Oat Bros</title>
+<meta name="description" content="Breakfast catering from Oat Bros — hot oat bowls for offices, gyms, studios, and cafes.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="/oat-bros-logo.png" alt="Oat Bros"></a>
+    <nav class="nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#locations">Locations</a>
+      <a href="catering.html" class="current">Catering</a>
+      <a href="careers.html">Careers</a>
+      <a href="/oat-bros-menu.pdf" target="_blank" rel="noopener">Menu</a>
+    </nav>
+    <div class="header-cta">
+      <a href="catering.html" class="btn btn-solid">Cater My Event</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="inset-row img-left">
+      <div class="inset-photo"><img src="/oat-bros-catering-bowls.jpg" alt="Rows of Oat Bros catering bowls, ready to serve"></div>
+      <div>
+        <h2 class="section-title">Want oats delivered to your office/gym/studio/cafe? Let's talk!</h2>
+
+        <form id="cateringForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="4616c193-f815-4831-a058-849a3627480d">
+          <input type="hidden" name="subject" value="New catering enquiry — Oat Bros website">
+          <input type="hidden" name="from_name" value="Oat Bros Website">
+          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+          <div class="grid-2">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-field">
+              <label for="company">Company / Organiser</label>
+              <input type="text" id="company" name="company">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-field">
+              <label for="date">Event Date</label>
+              <input type="date" id="date" name="date">
+            </div>
+            <div class="form-field">
+              <label for="headcount">Headcount</label>
+              <input type="number" id="headcount" name="headcount" min="1">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="details">Tell us about your event</label>
+            <textarea id="details" name="details" placeholder="Location, timing, dietary needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid" style="width:100%; justify-content:center;">Send Enquiry</button>
+          <p class="form-note" id="cateringFormNote">Sent straight to the Oat Bros team — we'll get back to you with pricing.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo"><img src="/oat-bros-logo.png" alt="Oat Bros"></a>
+        <p style="margin-top:16px; max-width:260px; color:var(--ink-soft);">Local oats, yummy toppings. Oat bowls in Grey Lynn and Hamilton East.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <a href="index.html#locations">Grey Lynn, Auckland</a>
+        <a href="index.html#locations">Hamilton East</a>
+      </div>
+      <div class="footer-col">
+        <h5>Oat Bros</h5>
+        <a href="/oat-bros-menu.pdf" target="_blank" rel="noopener">Menu (PDF)</a>
+        <a href="catering.html">Catering</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Say Hi</h5>
+        <a href="mailto:hello@oatbros.com">hello@oatbros.com</a>
+        <a href="https://instagram.com/oatbros_" target="_blank" rel="noopener">@oatbros_</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Oat Bros</span>
+      <span>Aotearoa, New Zealand</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var navToggle = document.querySelector('.nav-toggle');
+  var siteNav = document.querySelector('.nav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var open = siteNav.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    siteNav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        siteNav.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  var cateringForm = document.getElementById('cateringForm');
+  var cateringNote = document.getElementById('cateringFormNote');
+  if (cateringForm) {
+    cateringForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = cateringForm.querySelector('button[type="submit"]');
+      var originalLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      fetch(cateringForm.action, {
+        method: 'POST',
+        body: new FormData(cateringForm),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.success) {
+            cateringForm.reset();
+            btn.textContent = 'Sent!';
+            cateringNote.textContent = "Thanks — we've got your enquiry and will be in touch shortly.";
+          } else {
+            btn.disabled = false;
+            btn.textContent = originalLabel;
+            cateringNote.textContent = 'Something went wrong sending that — mind trying again?';
+          }
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          cateringNote.textContent = 'Something went wrong sending that — mind trying again?';
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
