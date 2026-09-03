@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grab & Go — Oat Bros</title>
+<meta name="description" content="Oat Bros grab-and-go fridge — scan, pick your bowl, and pay in seconds.">
+<link rel="stylesheet" href="styles.css">
+  <style>
+  .grab-hero { text-align: center; padding: 56px 0 8px; }
+.grab-hero h1 { color: var(--blue); font-size: clamp(28px, 4vw, 44px); margin: 0 0 14px; }
+.grab-hero p { color: var(--ink-soft); max-width: 480px; margin: 0 auto; font-size: 16px; line-height: 1.35; }
+.grab-list { max-width: 640px; margin: 0 auto; padding: 36px 0 70px; }
+.grab-item { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.grab-item:first-of-type { border-top: 1px solid var(--line); }
+.grab-item h3 { font-size: 19px; font-weight: 700; margin: 0 0 4px; }
+.grab-item p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+.grab-price { font-weight: 700; font-size: 16px; color: var(--blue); white-space: nowrap; margin-right: 4px; }
+.grab-pay-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; font-size: 13px; padding: 12px 22px; border: 1px solid var(--blue); background: var(--blue); color: var(--paper); white-space: nowrap; }
+.grab-pay-btn:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+.grab-note { max-width: 640px; margin: 0 auto; padding: 0 0 60px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+@media (max-width: 560px) { .grab-item { flex-wrap: wrap; } }
+</style>
+  </head>
+  <body>
+  <header class="site-header">
+  <div class="wrap">
+  <a href="index.html" class="logo"><img src="/oat-bros-logo.png" alt="Oat Bros"></a>
+  <nav class="nav">
+  <a href="index.html#about">About</a>
+  <a href="index.html#locations">Locations</a>
+  <a href="catering.html">Catering</a>
+  <a href="careers.html">Careers</a>
+  <a href="/oat-bros-menu.pdf" target="_blank" rel="noopener">Menu</a>
+  </nav>
+  <div class="header-cta">
+  <a href="catering.html" class="btn btn-solid">Cater My Event</a>
+  <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+  </div>
+  </div>
+  </header>
+  <section class="grab-hero wrap">
+  <h1>Grab & Go</h1>
+  <p>Pick your bowl from the fridge, tap pay below, and you're all set. Thanks for being honest — every scan keeps the fridge stocked.</p>
+  </section>
+  <div class="wrap grab-list">
+  <div class="grab-item">
+  <div>
+  <h3>Protein Overnight Oats</h3>
+<p>Oat Bros Lemon Curd Protein Overnight Oats</p>
+  </div>
+  <div style="display:flex; align-items:center; gap:16px;">
+  <span class="grab-price">$16.00</span>
+  <a class="grab-pay-btn" href="https://buy.stripe.com/6oU7sKh2C6gYbtSbwZ3Ru04">Pay Now</a>
+  </div>
+  </div>
+  <div class="grab-item">
+  <div>
+  <h3>BFT Protein Overnight Oats</h3>
+<p>Oat Bros Protein Overnight Oats</p>
+  </div>
+<div style="display:flex; align-items:center; gap:16px;">
+  <span class="grab-price">$14.00</span>
+  <a class="grab-pay-btn" href="https://buy.stripe.com/7sY00i4fQgVCbtSeJb3Ru05">Pay Now</a>
+  </div>
+  </div>
+  </div>
+  <p class="grab-note">Secure checkout powered by Stripe — card, Apple Pay & Google Pay accepted.</p>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-grid">
+<div class="footer-col">
+<a href="index.html" class="logo"><img src="/oat-bros-logo.png" alt="Oat Bros"></a>
+  <p style="margin-top:16px; max-width:260px; color:var(--ink-soft);">Local oats, yummy toppings. Oat bowls in Grey Lynn and Hamilton East.</p>
+  </div>
+  <div class="footer-col">
+  <h5>Visit</h5>
+  <a href="index.html#locations">Grey Lynn, Auckland</a>
+  <a href="index.html#locations">Hamilton East</a>
+  </div>
+  <div class="footer-col">
+  <h5>Oat Bros</h5>
+  <a href="/oat-bros-menu.pdf" target="_blank" rel="noopener">Menu (PDF)</a>
+  <a href="catering.html">Catering</a>
+  <a href="careers.html">Careers</a>
+  </div>
+  <div class="footer-col">
+  <h5>Say Hi</h5>
+  <a href="mailto:hello@oatbros.com">hello@oatbros.com</a>
+  <a href="https://instagram.com/oatbros_" target="_blank" rel="noopener">@oatbros_</a>
+  </div>
+  </div>
+  <div class="footer-bottom">
+  <span>© 2026 Oat Bros</span>
+  <span>Aotearoa, New Zealand</span>
+  </div>
+  </div>
+  </footer>
+  <script>
+  var navToggle = document.querySelector('.nav-toggle');
+var siteNav = document.querySelector('.nav');
+if (navToggle && siteNav) {
+navToggle.addEventListener('click', function () {
+  var open = siteNav.classList.toggle('nav-open');
+navToggle.setAttribute('aria-expanded', open);
+});
+siteNav.querySelectorAll('a').forEach(function (a) {
+  a.addEventListener('click', function () {
+    siteNav.classList.remove('nav-open');
+navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+}
+</script>
+  </body>
+  </html>
+  
