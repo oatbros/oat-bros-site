@@ -4,7 +4,8 @@
 
 const PRODUCTS = {
   'protein-oats': { name: 'Protein Overnight Oats', cents: 1600 },
-  'bft-protein-oats': { name: 'BFT Protein Overnight Oats', cents: 1400 }
+  'bft-protein-oats': { name: 'BFT Protein Overnight Oats', cents: 1400 },
+  'oat-hat': { name: 'Oat Enthusiast Hat (pre order)', cents: 3500 }
 };
 
 const DELIVERY_CENTS = 800; // flat-rate courier, NZD
