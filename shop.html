@@ -10,7 +10,7 @@
   .pdp { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; max-width: 1100px; margin: 0 auto; padding-top: 48px; padding-bottom: 80px; }
   .gallery-main { position: relative; overflow: hidden; background: #e9e1cf; aspect-ratio: 3 / 4; }
   .gallery-track { display: flex; height: 100%; transition: transform 0.35s ease; }
-  .gallery-track img { width: 100%; height: 100%; flex: 0 0 100%; object-fit: cover; display: block; }
+  .gallery-track img { width: 100%; height: 100%; flex: 0 0 100%; object-fit: contain; display: block; }
   .g-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border: 0; background: rgba(246, 239, 223, 0.92); color: var(--ink); font-size: 20px; cursor: pointer; display: none; }
   .g-btn:hover { background: var(--paper); }
   .g-prev { left: 12px; }
@@ -140,7 +140,7 @@
   }
 
   // To add carousel images: upload them to the repo, then add their paths here.
-  var IMAGES = ['/oat-hat.jpg'];
+  var IMAGES = ['/oat-hat.jpg?v=2', '/oat-hat-2.jpg', '/oat-hat-3.jpg', '/oat-hat-4.jpg'];
   var PRICE = 3500, DELIVERY = 800, PRODUCT_ID = 'oat-hat';
   var qty = 1, idx = 0;
 
