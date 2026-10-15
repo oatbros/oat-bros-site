@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — Oat Bros</title>
+<meta name="description" content="Order Oat Bros overnight oats online for pickup or delivery.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .shop-hero { text-align: center; padding-top: 56px; padding-bottom: 8px; }
+  .shop-hero h1 { color: var(--blue); font-size: clamp(28px, 4vw, 44px); margin: 0 0 14px; }
+  .shop-hero p { color: var(--ink-soft); max-width: 480px; margin: 0 auto; font-size: 16px; line-height: 1.35; }
+  .shop-wrap { max-width: 720px; margin: 0 auto; padding-top: 36px; padding-bottom: 70px; }
+  .shop-item { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .shop-item:first-of-type { border-top: 1px solid var(--line); }
+  .shop-item h3 { font-size: 19px; font-weight: 700; margin: 0 0 4px; }
+  .shop-item p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+  .shop-price { font-weight: 700; font-size: 16px; color: var(--blue); white-space: nowrap; }
+  .shop-right { display: flex; align-items: center; gap: 16px; }
+  .qty { display: inline-flex; align-items: center; border: 1px solid var(--ink); }
+  .qty button { width: 34px; height: 38px; background: none; border: 0; font-size: 18px; cursor: pointer; color: var(--ink); }
+  .qty span { min-width: 28px; text-align: center; font-size: 15px; }
+  .cart-box { margin-top: 40px; padding: 24px; border: 1px solid var(--ink); }
+  .cart-box h2 { margin: 0 0 16px; font-size: 20px; color: var(--blue); }
+  .cart-line { display: flex; justify-content: space-between; padding: 6px 0; font-size: 15px; }
+  .cart-total { display: flex; justify-content: space-between; padding-top: 14px; margin-top: 10px; border-top: 1px solid var(--line); font-weight: 700; }
+  .fulfil { display: flex; gap: 20px; margin: 18px 0; font-size: 15px; flex-wrap: wrap; }
+  .fulfil label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .shop-msg { font-size: 13px; color: var(--ink-soft); margin: 12px 0 0; text-align: center; }
+  .shop-success { text-align: center; padding: 14px; margin-bottom: 28px; border: 1px solid var(--blue); color: var(--blue); font-weight: 500; }
+  @media (max-width: 560px) {
+    .shop-item { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="/oat-bros-logo.png" alt="Oat Bros"></a>
+    <nav class="nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#locations">Locations</a>
+      <a href="shop.html" class="current">Shop</a>
+      <a href="catering.html">Catering</a>
+      <a href="careers.html">Careers</a>
+      <a href="/oat-bros-menu.pdf" target="_blank" rel="noopener">Menu</a>
+    </nav>
+    <div class="header-cta">
+      <a href="catering.html" class="btn btn-solid">Cater My Event</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+
+<section class="shop-hero wrap">
+  <h1>Shop</h1>
+  <p>Order ahead for pickup from our stores, or get it couriered to your door.</p>
+</section>
+
+<div class="wrap shop-wrap">
+  <div id="shopSuccess" class="shop-success" style="display:none;">Thanks! Your order is in. A receipt is on its way to your email.</div>
+  <div id="products"></div>
+
+  <div class="cart-box" id="cartBox" style="display:none;">
+    <h2>Your order</h2>
+    <div id="cartLines"></div>
+    <div class="fulfil">
+      <label><input type="radio" name="fulfil" value="pickup" checked> Pickup (free)</label>
+      <label><input type="radio" name="fulfil" value="delivery"> Courier delivery (+$8.00)</label>
+    </div>
+    <div class="cart-total"><span>Total</span><span id="cartTotal"></span></div>
+    <button type="button" id="checkoutBtn" class="btn btn-solid" style="width:100%; justify-content:center; margin-top:18px;">Checkout</button>
+    <p class="shop-msg" id="shopMsg">Secure checkout powered by Stripe.</p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo"><img src="/oat-bros-logo.png" alt="Oat Bros"></a>
+        <p style="margin-top:16px; max-width:260px; color:var(--ink-soft);">Local oats, yummy toppings. Oat bowls in Grey Lynn and Hamilton East.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <a href="index.html#locations">Grey Lynn, Auckland</a>
+        <a href="index.html#locations">Hamilton East</a>
+      </div>
+      <div class="footer-col">
+        <h5>Oat Bros</h5>
+        <a href="/oat-bros-menu.pdf" target="_blank" rel="noopener">Menu (PDF)</a>
+        <a href="catering.html">Catering</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Say Hi</h5>
+        <a href="mailto:hello@oatbros.com">hello@oatbros.com</a>
+        <a href="https://instagram.com/oatbros_" target="_blank" rel="noopener">@oatbros_</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Oat Bros</span>
+      <span>Aotearoa, New Zealand</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var navToggle = document.querySelector('.nav-toggle');
+  var siteNav = document.querySelector('.nav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var open = siteNav.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+  }
+
+  // Prices here are for display only; the server sets the real prices.
+  var PRODUCTS = [
+    { id: 'protein-oats', name: 'Protein Overnight Oats', desc: 'High-protein overnight oats, ready to eat.', cents: 1600 },
+    { id: 'bft-protein-oats', name: 'BFT Protein Overnight Oats', desc: 'Oat Bros Protein Overnight Oats, BFT edition.', cents: 1400 }
+  ];
+  var DELIVERY = 800;
+  var cart = {};
+
+  function money(c) { return '$' + (c / 100).toFixed(2); }
+
+  function render() {
+    var list = document.getElementById('products');
+    list.innerHTML = '';
+    PRODUCTS.forEach(function (p) {
+      var q = cart[p.id] || 0;
+      var row = document.createElement('div');
+      row.className = 'shop-item';
+      row.innerHTML =
+        '<div><h3>' + p.name + '</h3><p>' + p.desc + '</p></div>' +
+        '<div class="shop-right"><span class="shop-price">' + money(p.cents) + '</span>' +
+        '<div class="qty"><button type="button" data-id="' + p.id + '" data-d="-1" aria-label="Remove one">&minus;</button>' +
+        '<span>' + q + '</span>' +
+        '<button type="button" data-id="' + p.id + '" data-d="1" aria-label="Add one">+</button></div></div>';
+      list.appendChild(row);
+    });
+
+    var lines = document.getElementById('cartLines');
+    lines.innerHTML = '';
+    var sub = 0, count = 0;
+    PRODUCTS.forEach(function (p) {
+      var q = cart[p.id] || 0;
+      if (!q) return;
+      count += q;
+      sub += q * p.cents;
+      var l = document.createElement('div');
+      l.className = 'cart-line';
+      l.innerHTML = '<span>' + q + ' &times; ' + p.name + '</span><span>' + money(q * p.cents) + '</span>';
+      lines.appendChild(l);
+    });
+    var delivery = document.querySelector('input[name="fulfil"]:checked').value === 'delivery';
+    document.getElementById('cartTotal').textContent = money(sub + (delivery ? DELIVERY : 0));
+    document.getElementById('cartBox').style.display = count ? 'block' : 'none';
+  }
+
+  document.getElementById('products').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-id]');
+    if (!b) return;
+    var id = b.getAttribute('data-id');
+    var next = (cart[id] || 0) + parseInt(b.getAttribute('data-d'), 10);
+    cart[id] = Math.max(0, Math.min(next, 50));
+    render();
+  });
+
+  document.querySelectorAll('input[name="fulfil"]').forEach(function (r) {
+    r.addEventListener('change', render);
+  });
+
+  document.getElementById('checkoutBtn').addEventListener('click', function () {
+    var btn = this;
+    var msg = document.getElementById('shopMsg');
+    var items = Object.keys(cart).filter(function (k) { return cart[k] > 0; }).map(function (k) {
+      return { id: k, qty: cart[k] };
+    });
+    btn.disabled = true;
+    msg.textContent = 'Taking you to checkout...';
+    fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: items,
+        fulfilment: document.querySelector('input[name="fulfil"]:checked').value
+      })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.url) { window.location.href = d.url; return; }
+        throw new Error(d.error || 'Checkout failed');
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        msg.textContent = (err.message || 'Something went wrong') + ' Please try again.';
+      });
+  });
+
+  if (/[?&]success=1/.test(window.location.search)) {
+    document.getElementById('shopSuccess').style.display = 'block';
+  }
+
+  render();
+</script>
+
+</body>
+</html>
