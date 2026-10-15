@@ -3,8 +3,6 @@
 // Needs the STRIPE_SECRET_KEY environment variable set in Vercel.
 
 const PRODUCTS = {
-  'protein-oats': { name: 'Protein Overnight Oats', cents: 1600 },
-  'bft-protein-oats': { name: 'BFT Protein Overnight Oats', cents: 1400 },
   'oat-hat': { name: 'Oat Enthusiast Hat (pre order)', cents: 3500 }
 };
 
