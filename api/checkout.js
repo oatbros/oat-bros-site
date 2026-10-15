@@ -58,14 +58,14 @@ module.exports = async function handler(req, res) {
     p.append('shipping_options[0][shipping_rate_data][display_name]', 'Store pickup (free)');
     p.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', '0');
     p.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'nzd');
-    p.append('custom_fields[0][key]', 'pickup_store');
+    p.append('custom_fields[0][key]', 'pickupstore');
     p.append('custom_fields[0][type]', 'dropdown');
     p.append('custom_fields[0][label][type]', 'custom');
     p.append('custom_fields[0][label][custom]', 'Pickup store');
     p.append('custom_fields[0][dropdown][options][0][label]', 'Grey Lynn, Auckland');
-    p.append('custom_fields[0][dropdown][options][0][value]', 'grey_lynn');
+    p.append('custom_fields[0][dropdown][options][0][value]', 'greylynn');
     p.append('custom_fields[0][dropdown][options][1][label]', 'Hamilton East');
-    p.append('custom_fields[0][dropdown][options][1][value]', 'hamilton_east');
+    p.append('custom_fields[0][dropdown][options][1][value]', 'hamiltoneast');
   }
 
   try {
