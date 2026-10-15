@@ -28,6 +28,7 @@
   .fulfil label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
   .shop-msg { font-size: 13px; color: var(--ink-soft); margin: 12px 0 0; text-align: center; }
   .shop-success { text-align: center; padding: 14px; margin-bottom: 28px; border: 1px solid var(--blue); color: var(--blue); font-weight: 500; }
+  .shop-thumb { width: 88px; height: 88px; object-fit: cover; object-position: center 30%; flex-shrink: 0; }
   @media (max-width: 560px) {
     .shop-item { flex-wrap: wrap; }
   }
@@ -120,7 +121,7 @@
   var PRODUCTS = [
     { id: 'protein-oats', name: 'Protein Overnight Oats', desc: 'High-protein overnight oats, ready to eat.', cents: 1600 },
     { id: 'bft-protein-oats', name: 'BFT Protein Overnight Oats', desc: 'Oat Bros Protein Overnight Oats, BFT edition.', cents: 1400 },
-    { id: 'oat-hat', name: 'Oat Enthusiast Hat (pre order)', desc: 'It’s getting hot out! Protect your dome with the Oat Enthusiast cap — for all oat based and non oat based activities.', cents: 3500 }
+    { id: 'oat-hat', name: 'Oat Enthusiast Hat (pre order)', desc: 'It’s getting hot out! Protect your dome with the Oat Enthusiast cap — for all oat based and non oat based activities.', cents: 3500, img: '/oat-hat.jpg' }
   ];
   var DELIVERY = 800;
   var cart = {};
@@ -135,7 +136,7 @@
       var row = document.createElement('div');
       row.className = 'shop-item';
       row.innerHTML =
-        '<div><h3>' + p.name + '</h3><p>' + p.desc + '</p></div>' +
+        '<div style="display:flex;align-items:center;gap:16px;">' + (p.img ? '<img class="shop-thumb" src="' + p.img + '" alt="' + p.name + '">' : '') + '<div><h3>' + p.name + '</h3><p>' + p.desc + '</p></div></div>' +
         '<div class="shop-right"><span class="shop-price">' + money(p.cents) + '</span>' +
         '<div class="qty"><button type="button" data-id="' + p.id + '" data-d="-1" aria-label="Remove one">&minus;</button>' +
         '<span>' + q + '</span>' +
