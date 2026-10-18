@@ -3,7 +3,7 @@
 // Needs the STRIPE_SECRET_KEY environment variable set in Vercel.
 
 const PRODUCTS = {
-  'oat-hat': { name: 'Oat Enthusiast Hat (pre order)', cents: 3500 }
+  'oat-hat': { name: 'Oat Enthusiast Cap (pre order)', cents: 3500 }
 };
 
 const DELIVERY_CENTS = 800; // flat-rate courier, NZD
